@@ -2,7 +2,7 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
-var { Player } = require('../models/player')
+var Player = require('../models/player')
 
 router.get('/', (req, res) => {
     Player.find(
@@ -28,6 +28,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     var player = new Player({
+        playerId : req.body.playerId,
         name: req.body.name,
         rank: req.body.rank,
         nationality: req.body.nationality,
