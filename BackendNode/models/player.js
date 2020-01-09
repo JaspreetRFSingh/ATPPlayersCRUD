@@ -1,24 +1,17 @@
 const mongoose = require('mongoose');
-//const Demo = require('./Demo');
+var autoIncrement = require('mongoose-auto-increment');
+
+
 
 const playerSchema = mongoose.Schema({
-    playerId : {type : Number, unique: true, default : 12312},
     name: { type: String, required: true, unique : true },
-    rank: { type: Number, default : 1 },
+    rank: { type: Number},
     nationality: { type: String, required: true },
     grandSlamTitles: { type: Number, default : 0 }
 }, {
-    versionKey: false // You should be aware of the outcome after set to false
+    versionKey: false 
 });
 
-
-
-function foo(){
-    if( typeof foo.counter == 'undefined' ) {
-        foo.counter = 1;
-    }
-    foo.counter++;
-    return foo.counter;
-}
-
+autoIncrement.initialize(mongoose.connection);
+playerSchema.plugin(autoIncrement.plugin, 'Player')
 const Player = module.exports = mongoose.model('Player', playerSchema);

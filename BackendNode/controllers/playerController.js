@@ -28,7 +28,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     var player = new Player({
-        playerId : req.body.playerId,
         name: req.body.name,
         rank: req.body.rank,
         nationality: req.body.nationality,
