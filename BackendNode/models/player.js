@@ -12,6 +12,6 @@ const playerSchema = mongoose.Schema({
     versionKey: false 
 });
 
-autoIncrement.initialize(mongoose.connection);
-playerSchema.plugin(autoIncrement.plugin, 'Player')
+// autoIncrement.initialize(mongoose.connection);
+// playerSchema.plugin(autoIncrement.plugin, 'Player')
 const Player = module.exports = mongoose.model('Player', playerSchema);

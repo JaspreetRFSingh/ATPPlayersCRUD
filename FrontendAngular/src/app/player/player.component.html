@@ -1,1 +1,114 @@
-<p>player works!</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div align="center" >
+  <form #frm = "ngForm" (ngSubmit)= "addPlayer(frm)" *ngIf = "!toggleForm">
+    <h2 style="text-align: center;">Add Player</h2>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        Name:
+      </label>
+      <input type ="text" class="form-control" name ="playerName" value = "" ngModel>
+    </div>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        Nationality:
+      </label>
+      <input type ="text" class="form-control" name ="playerNationality" value = "" ngModel>
+    </div>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        ATP Rank:
+      </label>
+      <input type ="number" class="form-control" name ="playerRank" value = "" ngModel>
+    </div>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        GrandSlams won:
+      </label>
+      <input type ="number" class="form-control" name ="playerGrandSlams" value = "0"  ngModel>
+    </div>
+    <button style="width: 400px; margin: 30px;" type="submit" name="button" class="btn btn-success">Add Player</button>
+  </form>
+</div>
+
+
+<div align="center" >
+  <form #frmEdit = "ngForm" (ngSubmit)= "editPlayer(frmEdit)" *ngIf="toggleForm">
+    <h2 style="text-align: center;">Add Player</h2>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        Name:
+      </label>
+      <input type ="text" class="form-control" name ="playerName" value = "" ngModel>
+    </div>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        Nationality:
+      </label>
+      <input type ="text" class="form-control" name ="playerNationality" value = "" ngModel>
+    </div>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        ATP Rank:
+      </label>
+      <input type ="number" class="form-control" name ="playerRank" value = "" ngModel>
+    </div>
+    <div class="form-group" style="width: 400px; margin: 30px;">
+      <label for="">
+        GrandSlams won:
+      </label>
+      <input type ="number" class="form-control" name ="playerGrandSlams" value = "0"  ngModel>
+    </div>
+    <button style="width: 400px; margin: 30px;" type="submit" name="button" class="btn btn-success">Edit Player</button>
+  </form>
+</div>
+
+
+<h2 style="text-align: center;">
+  Players' List
+</h2>
+<div style="padding: 50px;" class="row">
+  <div class="row">
+    <div style="padding: 20px;" class="col-md-1">
+      <h3 style="text-align: center;">PlayerId</h3>
+    </div>
+    <div style="padding: 20px;" class="col-md-1">
+      <h3 style="text-align: center;">ATP Rank</h3>
+    </div>
+    <div style="padding: 20px;" class="col-md-2">
+      <h3 style="text-align: center;">Name</h3>
+    </div>
+     <div style="padding: 20px;" class="col-md-3">
+      <h3 style="text-align: center;">Nationality</h3>
+     </div>
+     <div style="padding: 20px;" class="col-md-2">
+      <h3 style="text-align: center;">GrandSlams Won</h3>
+     </div>
+     <div style="padding: 20px;" class="col-md-3">
+      <h3 style="text-align: center;">OPTIONS</h3>
+    </div>
+  </div>
+  <div *ngFor="let player of playersList" class="">
+    <div style="padding: 20px;" class="col-md-1" style="text-align: center;">
+      {{player._id}}
+    </div>
+    <div style="padding: 20px;" class="col-md-1" style="text-align: center;">
+      {{player.rank}}
+    </div>
+    <div style="padding: 20px;" class="col-md-2" style="text-align: center;">
+      {{player.name}}
+    </div>
+     <div style="padding: 20px;" class="col-md-3" style="text-align: center;">
+      {{player.nationality}}
+     </div>
+     <div style="padding: 20px;" class="col-md-2" style="text-align: center;">
+      {{player.grandSlamTitles}}
+     </div>
+     <div style="padding: 20px;" class="col-md-3  col text-center" style="align-content: center;">
+      <button  style="text-align: center;" type="button" name="button" class="btn btn-primary" (click)= "showEditForm(player)">Edit</button>
+      <button style="margin-left: 20px;" type="button" name="button" class="btn btn-danger" (click)="deletePlayer(player._id)">Delete</button>
+    </div>
+  </div>
+</div>
