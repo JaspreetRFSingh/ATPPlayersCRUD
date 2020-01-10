@@ -17,12 +17,20 @@ export class DataService {
   addPlayerDetails(newPlayer){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/players', newPlayer, {headers : headers})
+    return this.http.post('http://localhost:3000/players', newPlayer, {headers})
     .map(res => res.json());
   }
 
   deletePlayer(id) {
-    return this.http.delete('http://localhost:3000/players/'+id)
+    return this.http.delete('http://localhost:3000/players/' + id)
+    .map(res => res.json());
+  }
+
+  editPlayer(newPlayer) {
+    console.log("rsfdsdsv-------"+newPlayer._id + " ----  "+ newPlayer.grandSlamTitles);
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.put('http://localhost:3000/players/' + newPlayer._id, newPlayer, { headers })
     .map(res => res.json());
   }
 

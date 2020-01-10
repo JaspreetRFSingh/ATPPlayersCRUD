@@ -11,8 +11,8 @@ import {DataService} from '../data.service';
 })
 export class PlayerComponent implements OnInit {
   playersList: Player[] = [];
-  selectedPlayer : Player;
-  toggleForm : boolean = false;
+  selectedPlayer: Player;
+  toggleForm = false;
 
 
   constructor(private dataService: DataService) { }
@@ -23,12 +23,11 @@ export class PlayerComponent implements OnInit {
     this.dataService.getPlayersData()
     .subscribe(players => {
       this.playersList = players;
-      //console.log('data from dataservice: ' + this.playersList[0].name);
     });
   }
 
   addPlayer(form) {
-    let newPlayer : Player = {
+    const newPlayer: Player = {
       name : form.value.playerName,
       nationality : form.value.playerNationality,
       rank : form.value.playerRank,
@@ -41,11 +40,23 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  editPlayer(form){
-
+  editPlayer(form) {
+    const newPlayer: Player = {
+      _id: this.selectedPlayer._id,
+      name : form.value.playerName,
+      nationality : form.value.playerNationality,
+      rank : form.value.playerRank,
+      grandSlamTitles : form.value.playerGrandSlams
+    };
+    this.dataService.editPlayer(newPlayer)
+    .subscribe(data => {
+      console.log('Value updated!' + data.grandSlamTitles);
+      this.toggleForm = !this.toggleForm;
+      this.getPlayers();
+    });
   }
 
-  deletePlayer(id){
+  deletePlayer(id) {
     this.dataService.deletePlayer(id)
     .subscribe(data => {
       if (data.n === 1) {
@@ -61,6 +72,7 @@ export class PlayerComponent implements OnInit {
 
   showEditForm(player) {
     this.selectedPlayer = player;
+    this.toggleForm = !this.toggleForm;
   }
 
   ngOnInit() {

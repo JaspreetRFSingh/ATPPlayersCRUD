@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
         name: req.body.name,
         rank: req.body.rank,
         nationality: req.body.nationality,
-        grandSlamTitles: req.body.grandSlamTitles,
+        grandSlamTitles: req.body.grandSlamTitles
     });
 
     player.save((err, doc) => {
@@ -49,9 +49,9 @@ router.put('/:id', (req, res) => {
 
     var emp = {
         name: req.body.name,
-        position: req.body.position,
-        office: req.body.office,
-        salary: req.body.salary,
+        rank: req.body.rank,
+        nationality: req.body.nationality,
+        grandSlamTitles: req.body.grandSlamTitles
     };
     Player.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }
