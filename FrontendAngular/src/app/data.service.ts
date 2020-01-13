@@ -14,6 +14,11 @@ export class DataService {
     .map(res => res.json());
   }
 
+  getPlayerById(id) {
+    return this.http.get('http://localhost:3000/players/' + id)
+    .map(res => res.json());
+  }
+
   addPlayerDetails(newPlayer){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

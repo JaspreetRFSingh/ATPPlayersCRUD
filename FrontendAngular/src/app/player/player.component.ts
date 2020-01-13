@@ -26,35 +26,35 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  addPlayer(form) {
-    const newPlayer: Player = {
-      name : form.value.playerName,
-      nationality : form.value.playerNationality,
-      rank : form.value.playerRank,
-      grandSlamTitles : form.value.playerGrandSlams
-    };
-    this.dataService.addPlayerDetails(newPlayer)
-    .subscribe(player => {
-      console.log(player);
-      this.getPlayers();
-    });
-  }
+  // addPlayer(form) {
+  //   const newPlayer: Player = {
+  //     name : form.value.playerName,
+  //     nationality : form.value.playerNationality,
+  //     rank : form.value.playerRank,
+  //     grandSlamTitles : form.value.playerGrandSlams
+  //   };
+  //   this.dataService.addPlayerDetails(newPlayer)
+  //   .subscribe(player => {
+  //     console.log(player);
+  //     this.getPlayers();
+  //   });
+  // }
 
-  editPlayer(form) {
-    const newPlayer: Player = {
-      _id: this.selectedPlayer._id,
-      name : form.value.playerName,
-      nationality : form.value.playerNationality,
-      rank : form.value.playerRank,
-      grandSlamTitles : form.value.playerGrandSlams
-    };
-    this.dataService.editPlayer(newPlayer)
-    .subscribe(data => {
-      console.log('Value updated!' + data.grandSlamTitles);
-      this.toggleForm = !this.toggleForm;
-      this.getPlayers();
-    });
-  }
+  // editPlayer(form) {
+  //   const newPlayer: Player = {
+  //     _id: this.selectedPlayer._id,
+  //     name : form.value.playerName,
+  //     nationality : form.value.playerNationality,
+  //     rank : form.value.playerRank,
+  //     grandSlamTitles : form.value.playerGrandSlams
+  //   };
+  //   this.dataService.editPlayer(newPlayer)
+  //   .subscribe(data => {
+  //     console.log('Value updated!' + data.grandSlamTitles);
+  //     this.toggleForm = !this.toggleForm;
+  //     this.getPlayers();
+  //   });
+  // }
 
   deletePlayer(id) {
     this.dataService.deletePlayer(id)
@@ -70,10 +70,10 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  showEditForm(player) {
-    this.selectedPlayer = player;
-    this.toggleForm = !this.toggleForm;
-  }
+  // showEditForm(player) {
+  //   this.selectedPlayer = player;
+  //   this.toggleForm = !this.toggleForm;
+  // }
 
   ngOnInit() {
     this.getPlayers();

@@ -2,69 +2,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<div align="center" >
-  <form #frm = "ngForm" (ngSubmit)= "addPlayer(frm)" *ngIf = "!toggleForm">
-    <h2 style="text-align: center;">Add Player</h2>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        Name:
-      </label>
-      <input type ="text" class="form-control" name ="playerName" value = "" ngModel>
-    </div>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        Nationality:
-      </label>
-      <input type ="text" class="form-control" name ="playerNationality" value = "" ngModel>
-    </div>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        ATP Rank:
-      </label>
-      <input type ="number" class="form-control" name ="playerRank" value = "" ngModel>
-    </div>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        GrandSlams won:
-      </label>
-      <input type ="number" class="form-control" name ="playerGrandSlams" value = "0"  ngModel>
-    </div>
-    <button style="width: 400px; margin: 30px;" type="submit" name="button" class="btn btn-success">Add Player</button>
-  </form>
-</div>
-
-
-<div align="center" >
-  <form #frmEdit = "ngForm" (ngSubmit)= "editPlayer(frmEdit)" *ngIf="toggleForm">
-    <h2 style="text-align: center;">Edit Player's details</h2>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        Name:
-      </label>
-      <input type ="text" class="form-control" name ="playerName" value = "" [ngModel] = "selectedPlayer.name">
-    </div>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        Nationality:
-      </label>
-      <input type ="text" class="form-control" name ="playerNationality" value = "" [ngModel] = "selectedPlayer.nationality">
-    </div>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        ATP Rank:
-      </label>
-      <input type ="number" class="form-control" name ="playerRank" value = "" [ngModel] = "selectedPlayer.rank">
-    </div>
-    <div class="form-group" style="width: 400px; margin: 30px;">
-      <label for="">
-        GrandSlams won:
-      </label>
-      <input type ="number" class="form-control" name ="playerGrandSlams" value = ""  [ngModel] = "selectedPlayer.grandSlamTitles">
-    </div>
-    <button style="width: 400px; margin: 30px;" type="submit" name="button" class="btn btn-success">Edit Player</button>
-  </form>
-</div>
-
 
 <h2 style="text-align: center;">
   Players' List
@@ -107,7 +44,8 @@
       {{player.grandSlamTitles}}
      </div>
      <div style="padding: 20px;" class="col-md-3  col text-center" style="align-content: center;">
-      <button  style="text-align: center;" type="button" name="button" class="btn btn-primary" (click)= "showEditForm(player)">Edit</button>
+      <a style="text-align: center;" [routerLink]="['/editPlayer', player._id]">Edit</a>
+      <!-- <button  style="text-align: center;" type="button" name="button" class="btn btn-primary" (click)= "showEditForm(player)">Edit</button> -->
       <button style="margin-left: 20px;" type="button" name="button" class="btn btn-danger" (click)="deletePlayer(player._id)">Delete</button>
     </div>
   </div>
