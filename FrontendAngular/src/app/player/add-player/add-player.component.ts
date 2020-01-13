@@ -15,7 +15,7 @@ export class AddPlayerComponent implements OnInit {
   ngOnInit() {
   }
 
-  addPlayer(form) {
+  addPlayer( form ) {
     const newPlayer: Player = {
       name : form.value.playerName,
       nationality : form.value.playerNationality,

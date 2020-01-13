@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Player from '../../player';
 import {DataService} from '../../data.service';
-import { ActivatedRoute } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-player',
@@ -20,7 +19,7 @@ export class EditPlayerComponent implements OnInit {
   sGs: number;
 
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, public router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -55,6 +54,8 @@ export class EditPlayerComponent implements OnInit {
     .subscribe(data => {
       console.log('Value updated!' + data.grandSlamTitles);
     });
+    form.reset();
+    this.router.navigateByUrl('');
   }
 
 }

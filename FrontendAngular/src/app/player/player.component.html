@@ -3,9 +3,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
-<h2 style="text-align: center;">
-  Players' List
-</h2>
+<div class="row">
+  <h2 style="text-align: center;">
+    Players' List
+  </h2>
+  <button class="btn btn-success" style="float: right; margin-right: 120px;" [routerLink]="['/addPlayer']">Add Player</button>
+</div>
 <div style="padding: 50px;" class="row">
   <div class="row">
     <div style="padding: 20px;" class="col-md-1">
@@ -44,8 +47,8 @@
       {{player.grandSlamTitles}}
      </div>
      <div style="padding: 20px;" class="col-md-3  col text-center" style="align-content: center;">
-      <a style="text-align: center;" [routerLink]="['/editPlayer', player._id]">Edit</a>
-      <!-- <button  style="text-align: center;" type="button" name="button" class="btn btn-primary" (click)= "showEditForm(player)">Edit</button> -->
+      <!-- <a style="text-align: center;" [routerLink]="['/editPlayer', player._id]">Edit</a> -->
+      <button  style="text-align: center;" type="button" name="button" class="btn btn-primary" [routerLink]="['/editPlayer', player._id]">Edit</button>
       <button style="margin-left: 20px;" type="button" name="button" class="btn btn-danger" (click)="deletePlayer(player._id)">Delete</button>
     </div>
   </div>
