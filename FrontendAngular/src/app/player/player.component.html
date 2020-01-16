@@ -12,12 +12,9 @@
 <div style="padding: 50px;" class="row">
   <div class="row">
     <div style="padding: 20px;" class="col-md-1">
-      <h3 style="text-align: center;">PlayerId</h3>
-    </div>
-    <div style="padding: 20px;" class="col-md-1">
       <h3 style="text-align: center;">ATP Rank</h3>
     </div>
-    <div style="padding: 20px;" class="col-md-2">
+    <div style="padding: 20px;" class="col-md-3">
       <h3 style="text-align: center;">Name</h3>
     </div>
      <div style="padding: 20px;" class="col-md-3">
@@ -32,12 +29,9 @@
   </div>
   <div *ngFor="let player of playersList" class="">
     <div style="padding: 20px;" class="col-md-1" style="text-align: center;">
-      {{player._id}}
-    </div>
-    <div style="padding: 20px;" class="col-md-1" style="text-align: center;">
       {{player.rank}}
     </div>
-    <div style="padding: 20px;" class="col-md-2" style="text-align: center;">
+    <div style="padding: 20px;" class="col-md-3" style="text-align: center;">
       {{player.name}}
     </div>
      <div style="padding: 20px;" class="col-md-3" style="text-align: center;">
